@@ -22,3 +22,7 @@ def create_message():
 @app.get("/messages")
 def read_all_messages():
     return Message.query.all()
+
+@app.get("/greeting/<name>")
+def greet(name):
+    return render_template("home.html", name=name)
