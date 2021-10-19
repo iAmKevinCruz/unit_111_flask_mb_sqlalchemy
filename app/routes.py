@@ -1,4 +1,4 @@
-from flask import request
+from flask import request, render_template
 from app import db, app
 from app.database import Message
 
@@ -21,7 +21,13 @@ def create_message():
 
 @app.get("/messages")
 def read_all_messages():
-    return Message.query.all()
+    messages = Message.query.all()
+    return render_template("message_list.html", message_list=messages)
+
+@app.get("/messages/<pk>")
+def read_messages_by_id(pk):
+    message = Message.query.filter_by(id=pk).first()
+    return render_template("message_detail.html", message=message)
 
 @app.get("/greeting/<name>")
 def greet(name):

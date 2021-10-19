@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="card">
+        <h5 class="card-header">Message #{{ message.id }}</h5>
+        <div class="card-body">
+            <h5 class="card-title">{{ message.title }}</h5>
+            <p class="card-text">{{ message.body }}</p>
+            <a href="{{ url_for('read_all_messages') }}" class="btn btn-primary">Go To Messages</a>
+        </div>
+    </div>
+{% endblock content %}
